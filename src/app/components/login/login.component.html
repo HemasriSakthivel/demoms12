@@ -1,0 +1,47 @@
+    <div class="login-wrapper">
+      <div class="login-image">
+        <h1>Auction<br />Bazaar</h1>
+      </div>
+      <div class="login-form">
+        <h2>Welcome Back!</h2>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+  
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="input-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+              [(ngModel)]="email"
+              required
+            />
+          </div>
+  
+          <div class="input-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              [(ngModel)]="password"
+              required
+            />
+          </div>
+  
+          <button type="submit" class="login-btn" [disabled]="!loginForm.form.valid">
+            Login
+          </button>
+  
+          <div class="additional-links">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+            <a routerLink="/create-account">Create Account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  
