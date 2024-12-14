@@ -7,18 +7,32 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
 })
 export class LoginComponent {
   email = '';
-  password :string = '';
+  password: string = '';
   errorMessage = '';
+  passwordFieldType: string = 'password';
+  submitted: boolean = false; 
 
-  onSubmit(): void {
-    if (this.email === 'test@gmail.com' && this.password === 'password') {
-      alert('Login Successful');
+  onClick(loginForm: any): void {
+    this.submitted = true;  
+
+    if (loginForm.valid) {
+      if (this.email === 'test@gmail.com' && this.password === 'password') {
+        alert('Login Successful');
+      } else {
+        this.errorMessage = 'Invalid email or password';
+        console.log('Login form submitted:', { email: this.email, password: this.password });
+      }
     } else {
-      this.errorMessage = 'Invalid email or password';
+      this.errorMessage = 'Please fill out all required fields';
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType =
+      this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }
