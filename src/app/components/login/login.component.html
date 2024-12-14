@@ -16,14 +16,11 @@
           type="email"
           id="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Email Address*"
           [(ngModel)]="email"
           #emailInput="ngModel"
           required
         />
-        <div *ngIf="(emailInput.touched && emailInput.invalid) || (submitted &&  emailInput.invalid)" class="validation-message">
-          Email is required and must be valid.
-        </div>
       </div>
 
       <div class="input-group">
@@ -32,7 +29,7 @@
           type="password"
           id="password"
           name="password"
-          placeholder="Password"
+          placeholder="Password*"
           [(ngModel)]="password"
           #passwordInput="ngModel"
           required
@@ -42,9 +39,6 @@
           [class.fa-eye-slash]="passwordFieldType === 'text'"
           (click)="togglePasswordVisibility()"
         ></i>
-        <div *ngIf="(passwordInput.touched && passwordInput.invalid) || (submitted && passwordInput.invalid) " class="validation-message">
-          Password is required.
-        </div>
       </div>
 
       <button type="button" class="login-btn" (click)="onClick(loginForm)">
