@@ -1,11 +1,10 @@
 .footer {
-    background-color: var(--primary-color);
     color: white;
     text-align: center;
     align-items: center;
-    padding: 10px ;
+    padding-bottom: 20px;
     position: absolute;
-    width: 50%;
+    width: 97.5%;
     bottom: 0;
   }
   
@@ -17,13 +16,22 @@
   
   .footer-links a {
     color: white;
-    text-decoration: none;
-    font-size: 16px;
+    text-decoration: underline;
+    font-size: 19px;
     font-weight: bold;
     transition: color 0.3s ease;
   }
   
   .footer-links a:hover {
-    color: var(--secondary-color);
+    color:  #2ecc71;
   }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    overflow: hidden;
+}
   

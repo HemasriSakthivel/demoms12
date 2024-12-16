@@ -1,6 +1,6 @@
 <div class="login-wrapper">
   <div class="login-image">
-    <h1>Auction<br />Bazaar</h1>
+    <h1>Auction Bazaar<br />Login</h1>
   </div>
   <div class="login-form">
     <h2>Welcome Back!</h2>
@@ -12,36 +12,37 @@
     <form #loginForm="ngForm">
       <div class="input-group">
         <i class="fas fa-user"></i>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email Address*"
-          [(ngModel)]="email"
-          #emailInput="ngModel"
-          required
-        />
+        <input type="email" id="email" name="email" placeholder="Email Address*" [(ngModel)]="email"
+          #emailInput="ngModel" required />
       </div>
 
       <div class="input-group">
         <i class="fas fa-lock"></i>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password*"
-          [(ngModel)]="password"
-          #passwordInput="ngModel"
-          required
-        />
-        <i
-          class="fas fa-eye toggle-password"
-          [class.fa-eye-slash]="passwordFieldType === 'text'"
-          (click)="togglePasswordVisibility()"
-        ></i>
+        <input [type]="passwordFieldType" id="password" name="password" placeholder="Password*" [(ngModel)]="password"
+          #passwordInput="ngModel" required />
+        <i class="fas fa-eye toggle-password" [class.fa-eye-slash]="passwordFieldType === 'text'"
+          (click)="ttogglePasswordVisibility()"></i>
       </div>
 
-      <button type="button" class="login-btn" (click)="onClick(loginForm)">
+
+      <div class="radio-group">
+        <p>Sign in as:
+          <label>
+            <input type="radio" name="signinAs" value="admin" [(ngModel)]="signinAs" required />
+            Admin
+          </label>
+          <label>
+            <input type="radio" name="signinAs" value="auctioneer" [(ngModel)]="signinAs" />
+            Auctioneer
+          </label>
+          <label>
+            <input type="radio" name="signinAs" value="bidder" [(ngModel)]="signinAs" />
+            Bidder
+          </label>
+        </p>
+      </div>
+
+      <button type="button" class="login-btn"  (click)="onClick(loginForm)">
         Login
       </button>
 

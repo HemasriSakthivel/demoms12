@@ -1,27 +1,30 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink, ReactiveFormsModule],
 })
 export class LoginComponent {
   email = '';
   password: string = '';
-  errorMessage = '';
+  errorMessage:string = '';
   passwordFieldType: string = 'password';
-  submitted: boolean = false; 
+  signinAs: any;
 
   onClick(loginForm: any): void {
-    this.submitted = true;  
 
     if (loginForm.valid) {
+      this.errorMessage='';
+      confirm("Do you want to Login");
       if (this.email === 'test@gmail.com' && this.password === 'password') {
         alert('Login Successful');
+        loginForm.reset();
       } else {
         this.errorMessage = 'Invalid email or password';
         console.log('Login form submitted:', { email: this.email, password: this.password });
@@ -31,8 +34,9 @@ export class LoginComponent {
     }
   }
 
-  togglePasswordVisibility(): void {
+  ttogglePasswordVisibility(): void {
     this.passwordFieldType =
       this.passwordFieldType === 'password' ? 'text' : 'password';
   }
+  
 }
