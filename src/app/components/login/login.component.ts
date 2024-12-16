@@ -21,7 +21,6 @@ export class LoginComponent {
 
     if (loginForm.valid) {
       this.errorMessage='';
-      confirm("Do you want to Login");
       if (this.email === 'test@gmail.com' && this.password === 'password') {
         alert('Login Successful');
         loginForm.reset();

@@ -37,6 +37,7 @@ export class RegistrationComponent {
     }
 
     this.errorMessage = "";
+    alert("SignUp Successful");
     console.log('Form submitted successfully:', { name, username, email, password, signupAs });
     signupForm.reset();
   }
