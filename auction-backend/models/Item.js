@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
@@ -75,4 +75,20 @@ productSchema.pre('save', function (next) {
 });
 
 const Product = mongoose.model('Product', productSchema);
-module.exports = Product;
+module.exports = Product;*/
+
+const mongoose = require('mongoose');
+
+const itemSchema = new mongoose.Schema({
+  auctionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Auction', required: true },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  // status: { type: String, enum: ['For Sale', 'Sold', 'Unsold'], default: 'For Sale' },
+  salePrice: { type: Number },
+  category:{type:String,enum:['Electronics', 'Fashion', 'Laptops', 'Books', "TV's", "Antiques"],required:true},
+  image: { type: String, required: true },
+  bids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bid' }]
+});
+
+module.exports = mongoose.model('Item', itemSchema);
+
